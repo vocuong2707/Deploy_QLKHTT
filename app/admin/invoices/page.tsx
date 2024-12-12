@@ -6,9 +6,9 @@ import DashboadrHero from "../../components/Admin/DashboardHero";
 import AllInvoices from "@/app/components/Admin/Order/AllInvoices";
 import Heading from "@/app/Utils/Heading";
 
-type Props = {};
 
-const page = (props: Props) => {
+
+const page = () => {
   return (
     <div>
       <AdminProtected>

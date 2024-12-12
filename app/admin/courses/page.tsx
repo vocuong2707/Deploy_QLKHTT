@@ -6,9 +6,9 @@ import AdminSidebar from "../../components/Admin/sidebar/AdminSidebar";
 import DashboadrHero from "../../components/Admin/DashboardHero";
 import AllCourse from "../../components/Admin/Course/AllCourse"
 
-type Props = {}
 
-const page = (props: Props) => {
+
+const page = () => {
 
     return ( 
         <div>

@@ -7,9 +7,8 @@ import EditHero from "../../components/Admin/Customization/EditHero"
 import DashboadrHero from "../../components/Admin/DashboardHero";
 
 
-type Props = {}
 
-const page = (props: Props) => {
+const page = () => {
 
     return ( 
         <div>

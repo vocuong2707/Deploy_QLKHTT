@@ -7,9 +7,8 @@ import DashboadrHero from "../../components/Admin/DashboardHero";
 import Heading from "@/app/Utils/Heading";
 import EidtFaq from "../../components/Admin/Customization/EditFaq"
 
-type Props = {};
 
-const page = (props: Props) => {
+const page = () => {
   return (
     <div>
       <AdminProtected>

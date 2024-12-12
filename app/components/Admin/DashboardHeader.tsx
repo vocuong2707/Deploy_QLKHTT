@@ -71,26 +71,26 @@ const DashboardHeader: FC<Props> = ({ open, setOpen }) => {
     }
   }, [data, isSuccess]);
 
-  useEffect(() => {
-    socketId.on("connect", (data) => {
-      refetch();
-      console.log("Socket connected successfully");
-    });
+  // useEffect(() => {
+  //   socketId.on("connect", (data) => {
+  //     refetch();
+  //     console.log("Socket connected successfully");
+  //   });
 
-    socketId.on("connect_error", (error) => {
-      console.log("Socket connection error:", error);
-    });
+  //   socketId.on("connect_error", (error) => {
+  //     console.log("Socket connection error:", error);
+  //   });
 
-    socketId.on("disconnect", () => {
-      console.log("Socket disconnected");
-    });
+  //   socketId.on("disconnect", () => {
+  //     console.log("Socket disconnected");
+  //   });
 
-    return () => {
-      socketId.off("connect");
-      socketId.off("disconnect");
-      socketId.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     socketId.off("connect");
+  //     socketId.off("disconnect");
+  //     socketId.disconnect();
+  //   };
+  // }, []);
 
   const handleNotificationStatusChange = async (id: string) => {
     try {

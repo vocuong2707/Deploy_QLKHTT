@@ -6,9 +6,7 @@ import AdminSidebar from "../../components/Admin/sidebar/AdminSidebar";
 import DashboadrHero from "../../components/Admin/DashboardHero";
 import AllTeam  from "../../components/Admin/Users/AllTeam";
 
-type Props = {}
-
-const page = (props: Props) => {
+const page = () => {
 
     return ( 
         <div>

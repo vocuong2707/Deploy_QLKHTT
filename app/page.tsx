@@ -13,9 +13,9 @@ import TestModal from "./components/TestModal"; // Import TestModal
 import { useSelector } from 'react-redux';
 import ChatBox from './components/Chatbox/ChatBox'; // Import ChatBox
 
-interface Props {}
 
-const Page: FC<Props> = (props) => {
+
+const Page = () => {
  // Lấy count từ Redux
 
 

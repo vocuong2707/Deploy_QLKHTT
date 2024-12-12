@@ -1,9 +1,9 @@
 import React from "react";
 import { Style } from "../style/stylelogin";
 
-type Props = {};
 
-const About = (props: Props) => {
+
+const About = () => {
   return (
     <div className="text-black dark:text-white">
       <br />

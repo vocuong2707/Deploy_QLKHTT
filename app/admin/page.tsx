@@ -5,9 +5,9 @@ import AdminSidebar from "../components/Admin/sidebar/AdminSidebar";
 import AdminProtected from "../hooks/adminProtected";
 import DashboadrHero from "../components/Admin/DashboardHero";
 
-type Props = {};
 
-const page = (props: Props) => {
+
+const page = () => {
   return (
     <div>
       <AdminProtected>

@@ -7,9 +7,7 @@ import Heading from '@/app/Utils/Heading';
 import AdminSidebar from "../../components/Admin/sidebar/AdminSidebar";
 import DashboadrHero from "../../components/Admin/DashboardHeader";
 
-type Props = {}
-
-const page = (props: Props) => {
+const page = () => {
     return (
       <div>
         <AdminProtected>
