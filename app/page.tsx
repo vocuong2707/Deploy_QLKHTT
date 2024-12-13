@@ -27,27 +27,30 @@ const Page = () => {
   const [count, setCount] = useState(useSelector((state: any) => state.auth.count)); // Đếm số lần nộp bài kiểm tra
   const [route, setRoute] = useState("Login");
   const [isChatBoxOpen, setChatBoxOpen] = useState(false); // Trạng thái cho ChatBox
+  const [data,setData] = useState([]);
   
-  const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {
-    refetchOnMountOrArgChange: true,
-    skip:false,
-  });
+  
   const userRedux = useSelector((state: any) => state.auth.user);
-
+  if(!userRedux) {
+    const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {
+      refetchOnMountOrArgChange: true,
+      skip:false,
+    });
+    setData(userData)
+  }
   // Kiểm tra điều kiện để hiển thị modal
   useEffect(() => {
     
     
-    if (userData && userData.user) { // Kiểm tra userData.user tồn tại
-      if (userData.user.role === "user" && userData.user.isTest === false && count === 0) {
+    if (data && (data as any).user as any) { // Kiểm tra userData.user tồn tại
+      if ((data as any).user.role === "user" && (data as any).user.isTest === false && count === 0) {
         setOpenTestModal(true);
-        userData.count === 1;
+        (data as any).count === 1;
         apiSlice.util.invalidateTags([{ type: "User", id: "loadUser(undefined)" }]);
-        refetch(); // Tải lại dữ liệu từ server
         
       }
     }
-  }, [userData, count]);
+  }, [(data as any), count]);
   
   return (
     <div>
@@ -59,7 +62,7 @@ const Page = () => {
 
       <Header open={open} setOpen={setOpen} activeItem={activeItem} setRoute={setRoute} route={route} />
       <Hero />
-      <Courses user={userData?.user}/>
+      <Courses user={(data as any)?.user}/>
       <br />
       <br />
       <Revies />
@@ -106,7 +109,7 @@ const Page = () => {
       {isChatBoxOpen && (
         <div className="chatBoxContainer">
           {/* Truyền dữ liệu userData vào ChatBox */}
-          <ChatBox onClose={() => setChatBoxOpen(false)} userData={userData} />
+          <ChatBox onClose={() => setChatBoxOpen(false)} userData={(data as any)} />
         </div>
       )}
 
@@ -119,8 +122,7 @@ const Page = () => {
           onTestCompleted={() => setCount(1)} // Đánh dấu đã hoàn thành bài kiểm tra
           count={count}
           setCount={setCount}
-          refetch={refetch}
-          user={userData}
+          user={(data as any)}
         />
       )}
     </div>
