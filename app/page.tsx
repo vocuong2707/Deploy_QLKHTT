@@ -31,21 +31,20 @@ const Page = () => {
   
   
   const userRedux = useSelector((state: any) => state.auth.user);
-  if(!userRedux) {
+  
     const { data: userData, isLoading, refetch } = useLoadUserQuery(undefined, {
       refetchOnMountOrArgChange: true,
       skip:false,
     });
-    setData(userData)
-  }
+   
   // Kiểm tra điều kiện để hiển thị modal
   useEffect(() => {
     
     
-    if (data && (data as any).user as any) { // Kiểm tra userData.user tồn tại
-      if ((data as any).user.role === "user" && (data as any).user.isTest === false && count === 0) {
+    if (userData && (userData as any).user as any) { // Kiểm tra userData.user tồn tại
+      if ((userData as any).user.role === "user" && (userData as any).user.isTest === false && count === 0) {
         setOpenTestModal(true);
-        (data as any).count === 1;
+        (userData as any).count === 1;
         apiSlice.util.invalidateTags([{ type: "User", id: "loadUser(undefined)" }]);
         
       }
@@ -62,7 +61,7 @@ const Page = () => {
 
       <Header open={open} setOpen={setOpen} activeItem={activeItem} setRoute={setRoute} route={route} />
       <Hero />
-      <Courses user={(data as any)?.user}/>
+      <Courses user={(userData as any)?.user}/>
       <br />
       <br />
       <Revies />
@@ -122,7 +121,7 @@ const Page = () => {
           onTestCompleted={() => setCount(1)} // Đánh dấu đã hoàn thành bài kiểm tra
           count={count}
           setCount={setCount}
-          user={(data as any)}
+          user={(userData as any)}
         />
       )}
     </div>
